@@ -4,6 +4,7 @@ const initialState = {
   likes: 0
 }
 
+
 export const likesReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT:
