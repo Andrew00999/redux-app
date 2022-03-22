@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import uniqid from 'uniqid'
 import SingleComment from './SingleComment'
-import { commentCreate } from './redux/actions'
+import { commentCreate, commentsLoad } from './redux/actions'
 
 const Comments = () => {
   const [textComment, setTextComment] = useState('')
@@ -23,7 +23,11 @@ const Comments = () => {
     dispatch(commentCreate(textComment, id))
     // очистка input
     setTextComment('')
-  } 
+  }
+
+  useEffect(() => {
+    dispatch(commentsLoad())
+  }, [dispatch])
 
   return (
     <div className='card-comment'>
